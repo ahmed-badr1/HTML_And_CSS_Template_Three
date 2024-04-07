@@ -1,0 +1,97 @@
+@use "../abstracts/index" as *;
+$_box-color: ("quality": #f44036, "time": #009688, "passion": #03a9f4);
+
+/* Start Features */
+.features {
+  padding: var(--main-padding) 0;
+  .container {
+    @include responsive-distribution-grid;
+  }
+  .box {
+    text-align: center;
+    border: 1px solid #ccc;
+    .img-holder {
+      position: relative;
+      overflow: hidden;
+      &::before {
+        content: "";
+        @include overlay(white, 0);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-color: transparent transparent white transparent;
+        border-width: 0px 0px 170px 600px;
+        border-style: solid;
+        transition: var(--main-transition);
+      }
+      &:hover {
+        &::after {
+          border-width: 0 600px 170px 0px;
+        }
+      }
+      img {
+        max-width: 100%;
+      }
+    }
+    @each $name, $color in $_box-color {
+      &.#{$name} {
+        .img-holder::before {
+          background-color: rgba($color, 0.6);
+        }
+      }
+    }
+    h2 {
+      position: relative;
+      font-size: 40px;
+      margin: auto;
+      width: fit-content;
+      &::after {
+        content: "";
+        position: absolute;
+        height: 5px;
+        width: calc(100% - 30px);
+        bottom: -20px;
+        left: 15px;
+      }
+    }
+    p {
+      color: #777;
+      font-size: 20px;
+      line-height: 2;
+      padding: 25px;
+      margin: 30px 0
+    }
+    a {
+      display: block;
+      width: fit-content;
+      padding: 10px 30px;
+      margin: 0 auto 30px;
+      border: 3px solid transparent;
+      font-weight: bold;
+      font-size: 22px;
+      border-radius: 6px;
+      transition: var(--main-transition);
+    }
+    &:hover a {
+      background-position: left center;
+      color: white;
+    }
+  }
+  @each $name, $color in $_box-color {
+    .#{$name} {
+      h2::after {
+        background-color: $color;
+      }
+      a {
+        color: #{$color};
+        border-color: #{$color};
+        background-image: linear-gradient(to right, #{$color} 50%, white 50%);
+        background-size: 210% 80%;
+        background-position: right center;
+      }
+    }
+  }
+}

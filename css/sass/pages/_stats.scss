@@ -1,0 +1,67 @@
+@use "../abstracts/index" as *;
+
+/* Start Stats */
+.stats {
+  position: relative;
+  padding: var(--main-padding) 0;
+  background-image: url("../images/stats.jpg");
+  background-size: cover;
+  h2 {
+    position: relative;
+    font-weight: bold;
+    font-size: 2em;
+    width: fit-content;
+    margin: 0 auto 50px;
+  }
+  &::before {
+    content: "";
+    @include overlay(white, 0.95);
+  }
+  .container {
+    @include responsive-distribution-grid;
+  }
+  .box {
+    position: relative;
+    background-color: white;
+    padding: 30px 15px;
+    text-align: center;
+    opacity: 0.8;
+    transition: var(--main-transition);
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 0;
+      background-color: var(--main-color);
+      transition: 1s;
+    }
+    &::before {
+      bottom: 0;
+      left: 0;
+    }
+    &::after {
+      top: 0;
+      right: 0;
+    }
+    &:hover {
+      opacity: 1;
+      &::before,
+      &::after {
+        height: 100%;
+      }
+    }
+    .number {
+      display: block;
+      font-size: 50px;
+      font-weight: bold;
+      margin: 10px auto;
+    }
+    .text {
+      color: var(--main-color);
+      font-style: italic;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}

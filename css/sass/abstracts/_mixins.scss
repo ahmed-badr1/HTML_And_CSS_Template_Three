@@ -1,0 +1,72 @@
+@mixin breakpoints($point) {
+  @if $point == small {
+    @media (min-width: 576px) { @content; }
+  }
+  @else if $point == medium {
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $point == large {
+    @media (min-width: 992px) { @content; }
+  }
+  @else if $point == x-large {
+    @media (min-width: 1200px) { @content; }
+  }
+};
+
+
+@mixin prefixer($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: #{$value};
+  };
+  #{$property}: #{$value};
+}
+
+@mixin overlay($color, $opacity) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color, $opacity)
+}
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin center-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin center-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@mixin responsive-distribution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 5px;
+  @include breakpoints(medium) {
+    gap: 40px
+  }
+}
+
+@mixin responsive-distribution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px 5px;
+  @include breakpoints(medium) {
+    gap: 40px
+  }
+}
+
+@mixin child-fill-auto {
+  min-width: 250px;
+  flex: 1;
+}

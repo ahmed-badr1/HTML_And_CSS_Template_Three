@@ -1,0 +1,122 @@
+@use "../abstracts/index" as *;
+
+$_social-colors: ("facebook": #1877f2, "twiiter": #1da1f2, "youtube": #ff0000);
+
+/*Start Footer */
+footer {
+  background-color: #191919;
+  padding-top: 70px;
+  text-align: center;
+  @include breakpoints(medium) {
+    text-align: left;
+  }
+  .container {
+    @include responsive-distribution;
+  }
+  .box {
+    @include child-fill-auto;
+    h3 {
+      font-size: 50px;
+      color: white;
+      margin: 0 0 20px;
+    }
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      @include breakpoints(medium) {
+        justify-content: flex-start;
+      }
+      a {
+        background-color: #313131;
+        color: #b9b9b9;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        transition: var(--main-transition);
+        @each $name, $color in $_social-colors {
+          &.#{$name}:hover {
+            background-color: #{$color};
+          }
+        }
+      }
+    }
+    .text {
+      line-height: 2;
+      color: #b9b9b9;
+    }
+    .links {
+      padding: 0 25px;
+      li {
+        padding: 15px 0;
+        transition: var(--main-transition);
+        &:not(:last-child) {
+          border-bottom: 1px solid #444;
+        }
+        &:hover {
+          padding-left: 15px;
+          a {
+            color: white;
+          }
+        }
+        a {
+          color: #b9b9b9;
+          transition: var(--main-transition);
+          &::before {
+            font-family: "Font Awesome 5 Free";
+            content: "\F101";
+            font-weight: 900;
+            margin-right: 10px;
+            color: var(--main-color);
+          }
+        }
+      }
+    }
+    .line {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 15px;
+      color: #b9b9b9;
+      margin-bottom: 30px;
+      @include breakpoints(small) {
+        flex-direction: row;
+      }
+      i {
+        font-size: 25px;
+        color: var(--main-color);
+      }
+      .info {
+        line-height: 1.7;
+        span {
+          display: block;
+        }
+      }
+    }
+    &.footer-gallery img {
+      width: 78px;
+      border: 3px solid white;
+      margin: 2px;
+    }
+  }
+  .copyright {
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    margin: 50px 0 0;
+    border-top: 1px solid #444;
+    span {
+      &:first-child {
+        margin: 0 5px;
+        font-size: 22px;
+        color: var(--main-color);
+      }
+      &:last-child {
+        margin: 0 2px;
+      }
+    }
+  }
+}

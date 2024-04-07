@@ -1,0 +1,59 @@
+@use "../abstracts/index" as *;
+
+/* Start Video */
+.videos {
+  padding: var(--main-padding) 0;
+  .holder {
+    display: flex;
+    justify-content: center;
+    background-color: var(--section-background);
+    border: 1px solid #ddd;
+    flex-direction: column;
+    @include breakpoints(large) {
+      flex-direction: row;
+    }
+    .list {
+      min-width: 245px;
+      background-color: white;
+      .name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f4f4f4;
+        padding: 20px;
+        font-weight: bold;
+        color: var(--main-color);
+      }
+      ul li {
+        padding: 1em;
+        border-top: 1px solid var(--section-background);
+        cursor: pointer;
+        transition: var(--main-transition);
+        &:hover {
+          background-color: #fafafa;
+          color: var(--main-color);
+        }
+        span {
+          display: block;
+          margin-top: 0.5em;
+          color: #777;
+        }
+      }
+    }
+    .preview {
+      background-color: #e4e4e4;
+      padding: 0.5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      img {
+        max-width: 100%;
+      }
+      .info {
+        padding: 1em;
+        background-color: white;
+        margin-top: 10px;
+      }
+    }
+  }
+}

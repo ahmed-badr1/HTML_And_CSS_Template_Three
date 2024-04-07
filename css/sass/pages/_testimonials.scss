@@ -1,0 +1,44 @@
+@use "../abstracts/index" as *;
+
+/* Start Testimonials */
+.testimonials {
+  padding: var(--main-padding) 0;
+  background-color: var(--section-background);
+  .container {
+    @include responsive-distribution;
+  }
+  .box {
+    @include child-fill-auto;
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.07);
+    img {
+      position: absolute;
+      right: 0;
+      top: -50px;
+      background-color: var(--section-background);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      padding: 10px;
+    }
+    h3 {
+      margin: 0 0 10px;
+    }
+    .title {
+      color: #777;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .rate .filled {
+      color: #ffc107;
+    }
+    p {
+      color: #777;
+      margin: 10px 0 0;
+      line-height: 1.5;
+    }
+  }
+}

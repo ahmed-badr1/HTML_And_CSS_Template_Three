@@ -1,0 +1,45 @@
+@use "../abstracts/index" as *;
+
+/* Start Our Skills */
+.our-skills {
+  padding: var(--main-padding) 0;
+  .container {
+    display: flex;
+    flex-direction: column;
+    @include breakpoints(large) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  .skills {
+    flex: 1;
+  }
+  .skill {
+    h3 {
+      @include center-between;
+      margin: 1em 0 0.2em;
+      span {
+        color: var(--main-color);
+        padding: 3px 5px;
+        border: 1px solid #ccc;
+        font-size: 12px;
+        border-radius: 4px;
+      }
+    }
+    .progress {
+      position: relative;
+      height: 30px;
+      background-color: #eee;
+      border-radius: 3px;
+      span {
+        position: absolute;
+        background-color: var(--main-color);
+        border-radius: 3px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: width 0.5s linear;
+      }
+    }
+  }
+}

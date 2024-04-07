@@ -1,0 +1,146 @@
+@use "../abstracts/index" as *;
+
+/* Start Header*/
+header {
+  background-color: white;
+  @include prefixer(box-shadow, 0 0 10px 0 #ddd, webkit moz o ms);
+  .container {
+    position: relative;
+    @include center-flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .logo {
+    @include center-flex;
+    color: var(--main-color);
+    width: 100%;
+    height: 50px;
+    font-size: 1.7em;
+    font-weight: bold;
+    @include breakpoints(small) {
+      width: fit-content;
+      height: 73.5px;
+    }
+  }
+  nav {
+    @include center-flex;
+    margin: 0 auto;
+    @include breakpoints(small) {
+      margin: unset;
+    }
+    > ul {
+      display: flex;
+      > li {
+        &:last-child:hover .mega-menu {
+          opacity: 1;
+          z-index: 100;
+          top: calc(100% + 1px);
+        }
+        > a {
+          @include center-flex;
+          height: 40px;
+          font-size: 1em;
+          position: relative;
+          color: black;
+          padding: 0 8px;
+          overflow: hidden;
+          transition: var(--main-transition);
+          @include breakpoints(small) {
+            height: 73.5px;
+            padding: 0 30px;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            background-color: var(--main-color);
+            width: 100%;
+            height: 4px;
+            top: 0;
+            left: -100%;
+            transition: var(--main-transition);
+          }
+          &:hover{
+            color: var(--main-color);
+            background-color: #fafafa;
+            &::before {
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .mega-menu {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding: 5px;
+    background-color: white;
+    border-bottom: 3px solid var(--main-color);
+    display: flex;
+    flex-direction: column;
+    top: calc(100% + 50px);
+    opacity: 0;
+    z-index: -1;
+    transition: top var(--main-transition), opacity var(--main-transition);
+    @include breakpoints(small) {
+      flex-direction: row;
+      padding: 30px;
+      gap: 40px;
+    }
+    .image{
+      display: none;
+      @include breakpoints(large) {
+        display: block;
+      }
+      img {
+        max-width: 100%;
+      }
+    }
+    .links {
+      min-width: 235px;
+      flex: 1;
+      li {
+        position: relative;
+        transition: var(--main-transition);
+        &:not(:last-child) {
+          border-bottom: 1px solid #e9e6e6;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: #fafafa;
+          left: 0;
+          width: 0%;
+          top: 0;
+          height: 100%;
+          z-index: -1;
+          transition: var(--main-transition);
+        }
+        &:hover {
+          padding-left: 15px;
+          &::before {
+            width: 100%;
+          }
+        }
+        a {
+          display: block;
+          color: var(--main-color);
+          padding: 15px;
+          font-size: 18px;
+          font-weight: bold;
+          i {
+            margin-right: 10px;
+          }
+        }
+      }
+      &:first-of-type li:last-child {
+        border-bottom: 1px solid #e9e6e6;
+        @include breakpoints(small) {
+          border: none;
+        }
+      }
+    }
+  }
+}

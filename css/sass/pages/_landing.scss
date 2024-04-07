@@ -1,0 +1,70 @@
+@use "../abstracts/index" as *;
+
+/* Start Landing */
+
+.landing {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    @include overlay(#ececec, 1);
+    z-index: -1;
+    transform: skewY(-4deg);
+    transform-origin: top left;
+  }
+  .container {
+    min-height: calc(100vh - 90px);
+    display: flex;
+    align-items: center;
+    @include breakpoints(small) {
+      min-height: calc(100vh - 73.5px);
+    }
+  }
+  .text {
+    flex: 1;
+    text-align: center;
+    @include breakpoints(large) {
+      text-align: left;
+    }
+    h1 {
+      font-size: 1.785em;
+      margin: 0;
+      letter-spacing: -1px;
+    }
+    p {
+      font-size: 1.3em;
+      line-height: 1.7;
+      margin: 10px auto;
+      color: #666;
+      max-width: 500px;
+      @include breakpoints(large) {
+        margin: 5px 0 0;
+      }
+    }
+  }
+  .image {
+    display: none;
+    @include breakpoints(large) {
+      display: block;
+    }
+    img {
+      position: relative;
+      width: 600px;
+      animation: up-and-down 5s linear 0s infinite;
+    }
+  }
+  .go-down {
+    color: var(--main-color);
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: var(--main-transition);
+    &:hover {
+      color: var(--main-color-alt);
+    }
+    i {
+      animation: bouncing 1.5s infinite;
+    }
+  }
+}

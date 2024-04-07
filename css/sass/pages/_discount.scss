@@ -1,0 +1,84 @@
+@use "../abstracts/index" as *;
+
+/* Start Discount */
+.discount {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  .image {
+    position: relative;
+    background-image: url("../images/discount-background1.jpg");
+    background-size: cover;
+    color: white;
+    flex-basis: 100%;
+    @include center-flex;
+    z-index: 1;
+    animation: change-background 10s linear infinite;
+    @include breakpoints(large) {
+      flex-basis: 50%;
+    }
+    &::before {
+      content: "";
+      @include overlay(#1787e0, 0.96);
+      z-index: -1;
+    }
+  }
+  .content {
+    text-align: center;
+    padding: 0 1em;
+    h2 {
+      font-size: 2.1em;
+      letter-spacing: -2px;
+      margin: revert;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1em;
+      max-width: 500px;
+    }
+    img {
+      width: 300px;
+      max-width: 100%;
+    }
+  }
+  .form {
+    @include center-flex;
+    flex-basis: 100%;
+    padding-bottom: 50px;
+    @include breakpoints(large) {
+      flex-basis: 50%;
+    }
+    .input {
+      display: block;
+      width: 100%;
+      margin-bottom: 25px;
+      padding: 15px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background-color: #f9f9f9;
+      caret-color: var(--main-color);
+      &:focus {
+        outline: none;
+      }
+    }
+    textarea.input {
+      resize: none;
+      height: 200px;
+    }
+    input[type=submit] {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: var(--main-color);
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border: none;
+      cursor: pointer;
+      transition: var(--main-transition);
+      &:hover {
+        background-color: var(--main-color-alt);
+      }
+    }
+  }
+}

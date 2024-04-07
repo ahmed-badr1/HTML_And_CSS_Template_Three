@@ -1,0 +1,121 @@
+@use "../abstracts/index" as *;
+
+/* Start Pricing */
+.pricing {
+  position: relative;
+  padding: var(--main-padding) 0;
+  background-color: var(--section-background);
+  .container {
+    @include responsive-distribution-grid;
+  }
+  .box {
+    position: relative;
+    background-color: white;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+    text-align: center;
+    z-index: 1;
+    transition: var(--main-transition);
+    @include breakpoints(large) {
+      &.popular {
+        top: -20px;
+      }
+    }
+    &.popular {
+      .label {
+        position: absolute;
+        writing-mode: vertical-lr;
+        right: 1em;
+        top: 0;
+        background-color: var(--main-color);
+        color: white;
+        font-weight: bold;
+        font-size: 1em;
+        padding: 10px 0.5em 35px;
+        width: 2.125em;
+        display: flex;
+        align-items: center;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          border: 1.09em solid white;
+          border-color: transparent transparent white transparent;
+        }
+      }
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 51%;
+      background-color: #f6f6f6;
+      z-index: -1;
+      transition: var(--main-transition);
+    }
+    &::before {
+      top: 0;
+      left: 0;
+    }
+    &::after {
+      height: 49%;
+      bottom: 0;
+      right: 0;
+    }
+    &:hover::before,
+    &:hover::after {
+      width: 100%;
+    }
+    h2 {
+      margin: 30px auto;
+      letter-spacing: -1px;
+    }
+    img {
+      width: 5em;
+      margin-bottom: 1.5em;
+    }
+    .price {
+      margin-bottom: 20px;
+      .amount {
+        display: block;
+        color: var(--main-color);
+        font-weight: bold;
+        font-size: 60px;
+        margin-bottom: 5px;
+      }
+      .time {
+        color: #777;
+      }
+    }
+    ul.properties {
+      text-align: left;
+      li {
+        padding: 20px;
+        border-top: 1px solid #eee;
+        &::before {
+          font-family: "Font Awesome 5 Free";
+          content: "\f00c";
+          font-weight: 900;
+          margin-right: 10px;
+          color: var(--main-color);
+        }
+      }
+    }
+    a {
+      display: block;
+      width: fit-content;
+      font-weight: bold;
+      padding: 15px 20px;
+      margin: 30px auto 40px;
+      color: var(--main-color);
+      border: 2px solid var(--main-color);
+      border-radius: 6px;
+      transition: var(--main-transition);
+      &:hover {
+        color: white;
+        background-color: var(--main-color);
+      }
+    }
+  }
+}

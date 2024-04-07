@@ -1,0 +1,44 @@
+@use "../abstracts/index" as *;
+
+/* Start Components */
+.main-title {
+  position: relative;
+  width: fit-content;
+  border: 2px solid black;
+  padding: 10px 20px;
+  margin: 0 auto 80px;
+  font-size: 25px;
+  text-transform: uppercase;
+  z-index: 1;
+  border-radius: 10px;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &::before {
+    left: -20px;
+  }
+  &::after {
+    right: -20px;
+  }
+  &:hover {
+    color: white;
+    border: 2px solid white;
+    transition-delay: calc(var(--main-transition) + 0.2s);
+    &::before {
+      z-index: -1;
+      animation: right-move calc(var(--main-transition) + 0.2s) linear forwards; 
+    }
+    &::after {
+      z-index: -1;
+      animation: left-move calc(var(--main-transition) + 0.2s) linear forwards;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@use "../abstracts/index" as *;
+
+/* Start Articles */
+.articles {
+  padding: var(--main-padding) 0;
+  .container {
+    @include responsive-distribution;
+  }
+  .box {
+    background-color: white;
+    min-width: 250px;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 10%);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform var(--main-transition), box-shadow var(--main-transition);
+    @include child-fill-auto;
+    @include breakpoints(large) {
+      &:not(:nth-child(-n+6)) {
+        flex: 0 1 calc((100% - 80px) / 3);
+      }
+    }
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 20%);
+    }
+    img {
+      max-width: 100%;
+    }
+    .content {
+      padding: 20px 1em;
+      h3 {
+        margin: 0;
+      }
+      p {
+        color: #777;
+        line-height: 1.5;
+        margin: 10px 0 0 0;
+      }
+    }
+    .info {
+      @include center-between;
+      padding: 20px 1em;
+      border-top: 1px solid #e6e6e7;
+      a {
+        color: var(--main-color);
+        font-weight: bold;
+      }
+      i {
+        color: var(--main-color);
+      }
+    }
+    &:hover .info i {
+      animation: moving-arrow calc(var(--main-transition) * 2) linear infinite;
+    }
+  }
+}
